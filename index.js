@@ -31,6 +31,14 @@ async function run() {
       res.send(allData);
     });
 
+    //delete a data
+    app.delete('/deleteProduct/:productId', async(req, res)=> {
+        const id = req.params.productId;
+        const query = {_id: ObjectId(id)};
+        const result =  await Instockcollection.deleteOne(query);
+        res.send(result);
+    })
+    
     // /load a data in stoc
     app.get("/inStocProduct/:productId", async (req, res) => {
       const id = req.params.productId;
