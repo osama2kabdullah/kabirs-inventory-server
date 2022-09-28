@@ -46,6 +46,13 @@ async function run() {
       const result = await Instockcollection.findOne(query);
       res.send(result);
     });
+    
+    //inser ad document
+    app.post('/addNewProduct', async (req, res)=> {
+        const doc = req.body;
+        const result = await Instockcollection.insertOne(doc);
+        res.send(result);
+    })
 
     //update a document
     app.post("/updateProduct", async (req, res) => {
