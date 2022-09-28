@@ -60,9 +60,7 @@ async function run() {
       const age = req.body.age;
       const filter = { _id: ObjectId(id) };
       const updateDocument = {
-        $set: {
-          age
-        },
+        $set: {age},
       };
       const result = await Instockcollection.updateOne(filter, updateDocument);
       res.send(result);
