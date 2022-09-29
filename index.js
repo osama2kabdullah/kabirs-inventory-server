@@ -57,7 +57,7 @@ async function run() {
 
     //load user based all data
     app.get("/userData", verifyToken, async (req, res) => {
-      jwt.verify(req.token, "secretkey", async (err, authData) => {
+      jwt.verify(req.token, process.env.ACCESS_TOKEN, async (err, authData) => {
         if (err) {
           res.sendStatus(403);
         } else {
@@ -96,7 +96,7 @@ async function run() {
     //login api
     app.post("/login", (req, res) => {
       const user = req.body.email;
-      jwt.sign({ user }, "secretkey", (err, token) => {
+      jwt.sign({ user }, process.env.ACCESS_TOKEN, (err, token) => {
         res.json({ token });
       });
     });
