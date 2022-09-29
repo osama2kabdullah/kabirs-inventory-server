@@ -53,10 +53,10 @@ async function run() {
     })
     
     // /load a data in stoc
-    app.get("/inStocProduct/:productId", async (req, res) => {
+    app.get("/manageproducts/:productId", async (req, res) => {
       const id = req.params.productId;
       const query = { _id: ObjectId(id) };
-      const result = await Instockcollection.findOne(query);
+      const result = await usersInstockcollection.findOne(query);
       res.send(result);
     });
     
