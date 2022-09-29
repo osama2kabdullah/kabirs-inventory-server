@@ -22,7 +22,11 @@ async function run() {
     const Instockcollection = client
       .db("kabirs-inventory")
       .collection("in-stocs-products");
-
+      const usersInstockcollection = client
+      .db("kabirs-inventory")
+      .collection("users-in-stocs-products")
+      
+      
     //load al in stocs
     app.get("/inStocProducts", async (req, res) => {
       const query = {};
@@ -30,6 +34,15 @@ async function run() {
       const allData = await result.toArray(result);
       res.send(allData);
     });
+    
+    //load user based all data
+    app.get('/userData', async (req, res)=> {
+      const email = req.query.email;
+        const query = {email};
+        const result = usersInstockcollection.find(query);
+        const allData = await result.toArray();
+        res.send(allData);
+    })
 
     //delete a data
     app.delete('/deleteProduct/:productId', async(req, res)=> {
