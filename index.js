@@ -75,7 +75,7 @@ async function run() {
       const updateDocument = {
         $set: {age},
       };
-      const result = await Instockcollection.updateOne(filter, updateDocument);
+      const result = await usersInstockcollection.updateOne(filter, updateDocument);
       res.send(result);
     });
   } finally {
