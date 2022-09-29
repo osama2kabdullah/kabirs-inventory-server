@@ -48,7 +48,7 @@ async function run() {
     app.delete('/deleteProduct/:productId', async(req, res)=> {
         const id = req.params.productId;
         const query = {_id: ObjectId(id)};
-        const result =  await Instockcollection.deleteOne(query);
+        const result =  await usersInstockcollection.deleteOne(query);
         res.send(result);
     })
     
@@ -63,7 +63,7 @@ async function run() {
     //inser ad document
     app.post('/addNewProduct', async (req, res)=> {
         const doc = req.body;
-        const result = await Instockcollection.insertOne(doc);
+        const result = await usersInstockcollection.insertOne(doc);
         res.send(result);
     })
 
